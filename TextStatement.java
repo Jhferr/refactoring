@@ -1,5 +1,3 @@
-import java.util.Enumeration;
-
 public class TextStatement extends Statement {
    public String getStartOfResult (Customer aCustomer){
       return "Rental Record for " + aCustomer.getName() +
@@ -17,18 +15,5 @@ public class TextStatement extends Statement {
       "You earned " +
       String.valueOf(aCustomer.getTotalFrequentRenterPoints()) +
       " frequent renter points";
-   }
-
-   public String value(Customer aCustomer) {
-      Enumeration rentals = aCustomer.getRentals();
-      String result = getStartOfResult(aCustomer);
-      while (rentals.hasMoreElements()) {
-         Rental each = (Rental) rentals.nextElement();
-         //show figures for this rental
-         result += getMiddleOfResult(each);
-      }
-      //add footer lines
-      result += getEndOfResult(aCustomer);
-      return result;
    }
 }
